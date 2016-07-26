@@ -578,6 +578,7 @@
 				1FE05D1D1D47007A000B938B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FE05D1E1D47007A000B938B /* Build configuration list for PBXNativeTarget "YZJPhotosTests" */ = {
 			isa = XCConfigurationList;
@@ -586,6 +587,7 @@
 				1FE05D201D47007A000B938B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1FE05D211D47007A000B938B /* Build configuration list for PBXNativeTarget "YZJPhotosUITests" */ = {
 			isa = XCConfigurationList;
@@ -594,6 +596,7 @@
 				1FE05D231D47007A000B938B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
