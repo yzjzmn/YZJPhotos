@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
@@ -33,6 +34,13 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P0S-G4-Nhx">
                     <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G09-Sq-KT6">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="4af-xP-nwp"/>
+                            </constraints>
+                        </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjr-KV-895">
                             <rect key="frame" x="293" y="7" width="70" height="30"/>
                             <color key="backgroundColor" red="0.31372549019607843" green="0.70588235294117641" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,7 +72,10 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
+                        <constraint firstItem="G09-Sq-KT6" firstAttribute="top" secondItem="P0S-G4-Nhx" secondAttribute="top" id="0GG-wQ-cMj"/>
                         <constraint firstAttribute="trailing" secondItem="bjr-KV-895" secondAttribute="trailing" constant="12" id="43W-LR-6Qi"/>
+                        <constraint firstItem="G09-Sq-KT6" firstAttribute="leading" secondItem="P0S-G4-Nhx" secondAttribute="leading" id="8Wt-8l-lNN"/>
+                        <constraint firstAttribute="trailing" secondItem="G09-Sq-KT6" secondAttribute="trailing" id="Haw-5t-Z2h"/>
                         <constraint firstAttribute="height" constant="44" id="bIM-az-vCY"/>
                         <constraint firstItem="bjr-KV-895" firstAttribute="top" secondItem="P0S-G4-Nhx" secondAttribute="top" constant="7" id="gqw-oA-wf2"/>
                         <constraint firstItem="DKf-Ax-c15" firstAttribute="top" secondItem="P0S-G4-Nhx" secondAttribute="top" constant="7" id="qxz-Il-GD9"/>

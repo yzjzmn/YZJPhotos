@@ -40,7 +40,12 @@
     _arrayDataSources = [@[] mutableCopy];
     
     self.doneBtn.layer.masksToBounds = YES;
-    self.doneBtn.layer.cornerRadius = 3.0f;
+    self.doneBtn.layer.cornerRadius = kSmallCorner;
+    
+    self.previewBtn.layer.borderWidth = 0.5f;
+    self.previewBtn.layer.masksToBounds = YES;
+    self.previewBtn.layer.cornerRadius = kSmallCorner;
+    self.previewBtn.layer.borderColor = UIColorFromRGB(0xe6e6e6).CGColor;
     
     [self initNavBtn];
     [self controlBottomBtnsStatus];
