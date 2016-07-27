@@ -81,7 +81,7 @@
             
             PhotoView *view = (PhotoView *) [[[UINib nibWithNibName:@"PhotoView" bundle:nil]
                                            instantiateWithOwner:self options:nil] objectAtIndex:0];
-            [view initWithTarget:weakSelf panAction:@selector(dragTile:) delAction:@selector(delImageBtnPressed:) tapAction:@selector(tapTile:) asset:model.asset];
+            [view initWithTarget:weakSelf panAction:@selector(dragTile:) delAction:@selector(delImageBtnPressed:) asset:model.asset];
             
             view.frame = [self createFrameLayoutTile];
             

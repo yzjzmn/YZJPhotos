@@ -12,7 +12,7 @@
 
 @interface PhotoView : UIView
 
-- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del tapAction:(SEL)tap asset:(PHAsset *)newAsset;
+- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del asset:(PHAsset *)newAsset;
 
 @property (nonatomic) PHAsset *phAsset;
 

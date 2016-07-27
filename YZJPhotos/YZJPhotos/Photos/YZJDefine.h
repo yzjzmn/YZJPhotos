@@ -24,8 +24,11 @@ alpha:1.0]
 
 #define WEAKSELF typeof(self) __weak weakSelf = self;
 
-///////ZLBigImageCell 不建议设置太大，太大的话会导致图片加载过慢
+//BigImageCell 不建议设置太大，太大的话会导致图片加载过慢
 #define kMaxImageWidth 500
+
+//YZJPreviewController
+#define kItemMargin 30
 
 #define CollectionName [[NSBundle mainBundle].infoDictionary valueForKey:(__bridge NSString *)kCFBundleNameKey]
 

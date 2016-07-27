@@ -20,14 +20,10 @@
 
 @implementation PhotoView
 
-- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del tapAction:(SEL)tap asset:(PHAsset *)newAsset
+- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del asset:(PHAsset *)newAsset
 {
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:target action:pan];
     
-    UITapGestureRecognizer *tapGesturRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:target
-                                                                                          action:tap];
-    
-    [self addGestureRecognizer:tapGesturRecognizer];
     [self addGestureRecognizer:panGestureRecognizer];
     
     [delBtn addTarget:target action:del forControlEvents:UIControlEventTouchUpInside];
