@@ -122,21 +122,6 @@
     _bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 44, kScreenWidth, 44)];
     _bottomView.backgroundColor = [UIColor whiteColor];
     
-    _btnOriginalPhoto = [UIButton buttonWithType:UIButtonTypeCustom];
-    _btnOriginalPhoto.frame = CGRectMake(12, 7, 60, 30);
-    [_btnOriginalPhoto setTitle:@"原图" forState:UIControlStateNormal];
-    _btnOriginalPhoto.titleLabel.font = [UIFont systemFontOfSize:15];
-    [_btnOriginalPhoto setTitleColor:UIColorFromRGB(0x50b4ea) forState: UIControlStateNormal];
-    [_btnOriginalPhoto setTitleColor:UIColorFromRGB(0x50b4ea) forState: UIControlStateSelected];
-    UIImage *normalImg = [UIImage imageNamed:@"btn_original_circle"];
-    UIImage *selImg = [UIImage imageNamed:@"btn_selected"];
-    [_btnOriginalPhoto setImage:normalImg forState:UIControlStateNormal];
-    [_btnOriginalPhoto setImage:selImg forState:UIControlStateSelected];
-    [_btnOriginalPhoto setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 5)];
-    [_btnOriginalPhoto addTarget:self action:@selector(btnOriginalImage_Click:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [_bottomView addSubview:_btnOriginalPhoto];
-    
     _btnDone = [UIButton buttonWithType:UIButtonTypeCustom];
     _btnDone.frame = CGRectMake(kScreenWidth - 82, 7, 70, 30);
     [_btnDone setTitle:@"确定" forState:UIControlStateNormal];

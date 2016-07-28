@@ -29,7 +29,7 @@
 @property (nonatomic, weak) YZJPhotoList *sender;
 
 //选则完成后回调
-@property (nonatomic, copy) void (^DoneBlock)(NSArray<YZJSelectPhotoModel *> *selPhotoModels, BOOL isSelectOriginalPhoto);
+@property (nonatomic, copy) void (^DoneBlock)(NSArray<YZJSelectPhotoModel *> *selPhotoModels);
 //取消选择后回调
 @property (nonatomic, copy) void (^CancelBlock)();
 

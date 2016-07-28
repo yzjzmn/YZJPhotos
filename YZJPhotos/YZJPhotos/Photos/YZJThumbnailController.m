@@ -128,7 +128,6 @@
 - (void)navLeftBtn_Click
 {
     self.sender.arraySelectPhotos = self.arraySelectPhotos.mutableCopy;
-    self.sender.isSelectOriginalPhoto = self.isSelectOriginalPhoto;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -142,7 +141,7 @@
 
 - (IBAction)doneBtn_Click:(id)sender {
     if (self.DoneBlock) {
-        self.DoneBlock(self.arraySelectPhotos, self.isSelectOriginalPhoto);
+        self.DoneBlock(self.arraySelectPhotos);
     }
 }
 - (IBAction)previewBtn_Click:(id)sender {
@@ -211,7 +210,7 @@
             __weak typeof(self) weakSelf = self;
 
             if (_arraySelectPhotos.count >= self.maxSelectCount) {
-//                ShowToastLong(@"最多只能选择%ld张图片", self.maxSelectCount);
+//                (@"最多只能选择%ld张图片", self.maxSelectCount);
                 return;
             }
             
@@ -240,7 +239,7 @@
     YZJPreviewController *vc = [[YZJPreviewController alloc] init];
     
     vc.assets = dataArray;
-    vc.arraySelectPhotos = [NSMutableArray arrayWithArray:_arrayDataSources];
+    vc.arraySelectPhotos = [NSMutableArray arrayWithArray:_arraySelectPhotos];
     
     vc.selectIndex = selectIndex;
     vc.isPresent = YES;
@@ -318,7 +317,7 @@
     PHAsset *asset = _arrayDataSources[0];
     
     if (![[YZJPhotosTool sharePhotoTool] judgeAssetisInLocalAblum:asset]) {
-//        ShowToastLong(@"该图片尚未从iCloud下载，请在系统相册中下载到本地后重新尝试，或在预览大图中加载完毕后选择");
+//        (@"该图片尚未从iCloud下载，请在系统相册中下载到本地后重新尝试，或在预览大图中加载完毕后选择");
         return;
     }
     YZJSelectPhotoModel *cameraModel = [[YZJSelectPhotoModel alloc] init];

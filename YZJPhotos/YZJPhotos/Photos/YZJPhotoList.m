@@ -87,7 +87,6 @@
     YZJThumbnailController *tvc = [[YZJThumbnailController alloc] initWithNibName:@"YZJThumbnailController" bundle:[NSBundle bundleForClass:self.class]];
     tvc.title = ablum.title;
     tvc.maxSelectCount = self.maxSelectCount;
-    tvc.isSelectOriginalPhoto = self.isSelectOriginalPhoto;
     tvc.assetCollection = ablum.assetCollection;
     tvc.arraySelectPhotos = self.arraySelectPhotos.mutableCopy;
     tvc.sender = self;

@@ -70,7 +70,7 @@
     WEAKSELF
     __weak typeof(listVC) weakPB = listVC;
     
-    [listVC setDoneBlock:^(NSArray *selPhotoModels, BOOL isSelectOriginalPhoto) {
+    [listVC setDoneBlock:^(NSArray<YZJSelectPhotoModel *> *selPhotoModels) {
         __strong typeof(weakPB) strongPB = weakPB;
         [strongPB dismissViewControllerAnimated:YES completion:nil];
                 
