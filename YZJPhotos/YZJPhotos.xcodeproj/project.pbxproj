@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F5611211D4751AF0050C274 /* YZJPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F5611201D4751AF0050C274 /* YZJPreviewController.m */; };
 		1FE05CF31D47007A000B938B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE05CF21D47007A000B938B /* main.m */; };
 		1FE05CF61D47007A000B938B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE05CF51D47007A000B938B /* AppDelegate.m */; };
 		1FE05CF91D47007A000B938B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE05CF81D47007A000B938B /* ViewController.m */; };
@@ -28,6 +29,8 @@
 		1FE05D431D470611000B938B /* YZJThumbnailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE05D381D470611000B938B /* YZJThumbnailController.xib */; };
 		1FE05D451D4706FB000B938B /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FE05D441D4706FB000B938B /* PhotoView.xib */; };
 		1FE05D481D47070D000B938B /* PhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE05D471D47070D000B938B /* PhotoView.m */; };
+		1FEED8211D49AB5C00E54067 /* YZJPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEED8201D49AB5C00E54067 /* YZJPreviewCell.m */; };
+		1FEED8251D49AED700E54067 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEED8241D49AED700E54067 /* UIView+Frame.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1F56111F1D4751AF0050C274 /* YZJPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZJPreviewController.h; sourceTree = "<group>"; };
+		1F5611201D4751AF0050C274 /* YZJPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZJPreviewController.m; sourceTree = "<group>"; };
 		1FE05CEE1D47007A000B938B /* YZJPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YZJPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FE05CF21D47007A000B938B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1FE05CF41D47007A000B938B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +92,10 @@
 		1FE05D441D4706FB000B938B /* PhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoView.xib; sourceTree = "<group>"; };
 		1FE05D461D47070D000B938B /* PhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoView.h; sourceTree = "<group>"; };
 		1FE05D471D47070D000B938B /* PhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoView.m; sourceTree = "<group>"; };
+		1FEED81F1D49AB5C00E54067 /* YZJPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YZJPreviewCell.h; sourceTree = "<group>"; };
+		1FEED8201D49AB5C00E54067 /* YZJPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YZJPreviewCell.m; sourceTree = "<group>"; };
+		1FEED8231D49AED700E54067 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		1FEED8241D49AED700E54067 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +146,7 @@
 		1FE05CF01D47007A000B938B /* YZJPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				1FEED8221D49AEC100E54067 /* Util */,
 				1FE05D251D470611000B938B /* Photos */,
 				1FE05D241D4704BF000B938B /* PrefixHeader.pch */,
 				1FE05CF41D47007A000B938B /* AppDelegate.h */,
@@ -203,8 +213,21 @@
 				1FE05D361D470611000B938B /* YZJThumbnailController.h */,
 				1FE05D371D470611000B938B /* YZJThumbnailController.m */,
 				1FE05D381D470611000B938B /* YZJThumbnailController.xib */,
+				1F56111F1D4751AF0050C274 /* YZJPreviewController.h */,
+				1F5611201D4751AF0050C274 /* YZJPreviewController.m */,
+				1FEED81F1D49AB5C00E54067 /* YZJPreviewCell.h */,
+				1FEED8201D49AB5C00E54067 /* YZJPreviewCell.m */,
 			);
 			path = Photos;
+			sourceTree = "<group>";
+		};
+		1FEED8221D49AEC100E54067 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				1FEED8231D49AED700E54067 /* UIView+Frame.h */,
+				1FEED8241D49AED700E54067 /* UIView+Frame.m */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F5611211D4751AF0050C274 /* YZJPreviewController.m in Sources */,
 				1FE05CF91D47007A000B938B /* ViewController.m in Sources */,
 				1FE05D3B1D470611000B938B /* YZJCollectionCell.m in Sources */,
 				1FE05D401D470611000B938B /* YZJPhotosTool.m in Sources */,
@@ -351,6 +375,8 @@
 				1FE05D411D470611000B938B /* YZJSelectPhotoModel.m in Sources */,
 				1FE05D421D470611000B938B /* YZJThumbnailController.m in Sources */,
 				1FE05CF61D47007A000B938B /* AppDelegate.m in Sources */,
+				1FEED8251D49AED700E54067 /* UIView+Frame.m in Sources */,
+				1FEED8211D49AB5C00E54067 /* YZJPreviewCell.m in Sources */,
 				1FE05D3D1D470611000B938B /* YZJPhotoList.m in Sources */,
 				1FE05CF31D47007A000B938B /* main.m in Sources */,
 			);
@@ -493,7 +519,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "/Users/yabei/Desktop/Have a try/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/yabei/Desktop/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch;
 				INFOPLIST_FILE = YZJPhotos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yzj.www.YZJPhotos;
@@ -505,7 +531,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				GCC_PREFIX_HEADER = "/Users/yabei/Desktop/Have a try/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = /Users/yabei/Desktop/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch;
 				INFOPLIST_FILE = YZJPhotos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yzj.www.YZJPhotos;

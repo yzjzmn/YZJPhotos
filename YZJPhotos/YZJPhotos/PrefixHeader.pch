@@ -19,6 +19,8 @@
 
 #define kSmallCorner    2.0f
 
+#define kMaxSelectCnt   9
+
 /*
  *  从RGB获得颜色 0xffffff
  */
@@ -30,5 +32,6 @@ blue:((float)(rgbValue & 0xFF))/255.0                       \
 alpha:1.0]
 
 
+#import "UIView+Frame.h"
 
 #endif /* PrefixHeader_pch */

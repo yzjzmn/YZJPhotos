@@ -65,7 +65,7 @@
     
     YZJPhotoList *listVC = [[YZJPhotoList alloc] initWithStyle:UITableViewStylePlain];
     listVC.arraySelectPhotos = [@[] mutableCopy];
-    listVC.maxSelectCount = 9 - self.tileArray.count;
+    listVC.maxSelectCount = kMaxSelectCnt - self.tileArray.count;
     
     WEAKSELF
     __weak typeof(listVC) weakPB = listVC;
@@ -73,9 +73,7 @@
     [listVC setDoneBlock:^(NSArray *selPhotoModels, BOOL isSelectOriginalPhoto) {
         __strong typeof(weakPB) strongPB = weakPB;
         [strongPB dismissViewControllerAnimated:YES completion:nil];
-        
-        //[_tileCoordinateArray removeAllObjects];
-        
+                
         //保存数据
         for(YZJSelectPhotoModel* model in selPhotoModels) {
             

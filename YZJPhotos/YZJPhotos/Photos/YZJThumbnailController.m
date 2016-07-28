@@ -14,6 +14,7 @@
 #import "YZJDefine.h"
 #import "YZJPhotosTool.h"
 #import "YZJSelectPhotoModel.h"
+#import "YZJPreviewController.h"
 
 @interface YZJThumbnailController ()<UICollectionViewDataSource, UICollectionViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
@@ -145,9 +146,12 @@
     }
 }
 - (IBAction)previewBtn_Click:(id)sender {
-    self.sender.arraySelectPhotos = self.arraySelectPhotos.mutableCopy;
-    self.sender.isSelectOriginalPhoto = self.isSelectOriginalPhoto;
-    [self.navigationController popViewControllerAnimated:YES];
+    NSMutableArray<PHAsset *> *arrSel = [NSMutableArray array];
+    
+    for (YZJSelectPhotoModel *model in self.arraySelectPhotos) {
+        [arrSel addObject:model.asset];
+    }
+    [self pushShowBigImgVCWithDataArray:arrSel selectIndex:arrSel.count-1];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -225,8 +229,47 @@
     } else {
         
         //点击预览了
-        
+        [self pushShowBigImgVCWithDataArray:_arrayDataSources selectIndex:indexPath.row - 1];
     }
+}
+
+#pragma mark - preview action
+
+- (void)pushShowBigImgVCWithDataArray:(NSArray<PHAsset *> *)dataArray selectIndex:(NSInteger)selectIndex
+{
+    YZJPreviewController *vc = [[YZJPreviewController alloc] init];
+    
+    vc.assets = dataArray;
+    vc.arraySelectPhotos = [NSMutableArray arrayWithArray:_arrayDataSources];
+    
+    vc.selectIndex = selectIndex;
+    vc.isPresent = YES;
+    
+    [self presentVC:vc];
+    
+}
+
+- (void)presentVC:(UIViewController *)vc
+{
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.navigationBar.translucent = YES;
+    
+    [nav.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: UIColorFromRGB(0x4d4d4d)}];
+    [nav.navigationBar setBackgroundImage:[self imageWithColor:UIColorFromRGB(0xffffff)] forBarMetrics:UIBarMetricsDefault];
+    [nav.navigationBar setTintColor:[UIColor blackColor]];
+    [self.sender presentViewController:nav animated:YES completion:nil];
+}
+
+- (UIImage *)imageWithColor:(UIColor*)color
+{
+    CGRect rect=CGRectMake(0,0, 1, 1);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *theImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return theImage;
 }
 
 #pragma mark - 判断软件是否有相册、相机访问权限
