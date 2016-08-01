@@ -241,13 +241,75 @@
     vc.assets = dataArray;
     vc.arraySelectPhotos = [NSMutableArray arrayWithArray:_arraySelectPhotos];
     
+    vc.maxSelectCount = kMaxSelectCnt;
+    
     vc.selectIndex = selectIndex;
     vc.isPresent = YES;
+    vc.shouldReverseAssets = NO;
+    
+    WEAKSELF
+    __weak typeof(vc) weakVc  = vc;
+    [vc setOnSelectedPhotos:^(NSArray<YZJSelectPhotoModel *> *selectedPhotos) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        [strongSelf.arraySelectPhotos removeAllObjects];
+        [strongSelf.arraySelectPhotos addObjectsFromArray:selectedPhotos];
+        [strongSelf.collectionView reloadData];
+    }];
+    
+    [vc setBtnDoneBlock:^(NSArray<YZJSelectPhotoModel *> *selectedPhotos) {
+        __strong typeof(weakSelf) strongSelf = weakSelf;
+        
+        __strong typeof(weakVc) strongVc = weakVc;
+        [strongSelf.arraySelectPhotos removeAllObjects];
+        [strongSelf.arraySelectPhotos addObjectsFromArray:selectedPhotos];
+        [strongSelf requestSelPhotos:strongVc];
+        [strongSelf.collectionView reloadData];
+        [strongSelf controlBottomBtnsStatus];
+    }];
     
     [self presentVC:vc];
     
 }
 
+#pragma mark - 请求所选择图片、回调
+- (void)requestSelPhotos:(UIViewController *)vc
+{
+    __weak typeof(self) weakSelf = self;
+    NSMutableArray *photos = [NSMutableArray arrayWithCapacity:self.arraySelectPhotos.count];
+    for (int i = 0; i < self.arraySelectPhotos.count; i++) {
+        [photos addObject:@""];
+    }
+    
+    CGFloat scale = self.isSelectOriginalPhoto?1:[UIScreen mainScreen].scale;
+    for (int i = 0; i < self.arraySelectPhotos.count; i++) {
+        YZJSelectPhotoModel *model = self.arraySelectPhotos[i];
+        [[YZJPhotosTool sharePhotoTool] requestImageForAsset:model.asset scale:scale resizeMode:PHImageRequestOptionsResizeModeExact completion:^(UIImage *image) {
+            if (image) [photos replaceObjectAtIndex:i withObject:[weakSelf scaleImage:image]];
+            
+            for (id obj in photos) {
+                if ([obj isKindOfClass:[NSString class]]) return;
+            }
+            
+            [vc.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }];
+    }
+}
+
+/**
+ * @brief 这里对拿到的图片进行缩放，不然原图直接返回的话会造成内存暴涨
+ */
+- (UIImage *)scaleImage:(UIImage *)image
+{
+    CGSize size = CGSizeMake(ScalePhotoWidth, ScalePhotoWidth * image.size.height / image.size.width);
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
+}
+
+
+#pragma mark --
 - (void)presentVC:(UIViewController *)vc
 {
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];

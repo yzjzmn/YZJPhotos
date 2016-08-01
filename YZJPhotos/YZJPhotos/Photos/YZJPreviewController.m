@@ -150,6 +150,7 @@
         model.localIdentifier = asset.localIdentifier;
         [_arraySelectPhotos addObject:model];
     }
+    
     if (self.btnDoneBlock) {
         self.btnDoneBlock(self.arraySelectPhotos);
     }
@@ -172,6 +173,7 @@
 
 - (void)navRightBtn_Click:(UIButton *)btn
 {
+    btn.selected = !btn.selected;
     if (_arraySelectPhotos.count >= self.maxSelectCount
         && btn.selected == NO) {
         //(@"最多只能选择%ld张图片", self.maxSelectCount);
@@ -193,7 +195,6 @@
         [self removeCurrentPageImage];
     }
     
-    btn.selected = !btn.selected;
     [self changeBtnDoneTitle];
 }
 
