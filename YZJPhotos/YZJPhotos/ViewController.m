@@ -68,8 +68,8 @@
 - (IBAction)addImageBtn_Click:(id)sender {
     
     YZJPhotoList *listVC = [[YZJPhotoList alloc] initWithStyle:UITableViewStylePlain];
-    listVC.arraySelectPhotos = _selectPhotos;
-    listVC.maxSelectCount = kMaxSelectCnt;
+    listVC.arraySelectPhotos = [@[] mutableCopy];
+    listVC.maxSelectCount = kMaxSelectCnt - _tileArray.count;
     
     WEAKSELF
     __weak typeof(listVC) weakPB = listVC;
@@ -79,15 +79,15 @@
         [strongPB dismissViewControllerAnimated:YES completion:nil];
         _selectPhotos = [NSMutableArray arrayWithArray:selPhotoModels];
         
-        //每次回调清除UI和数据
-        for (UIView *view in showImageView.subviews) {
-            if ([view isKindOfClass:[PhotoView class]]) {
-                [view removeFromSuperview];
-            }
-        }
-        
-        [self.tileArray removeAllObjects];
-        [self.tileCoordinateArray removeAllObjects];
+        //每次回调清除UI和数据  （已选功能，有bug暂时搁置）
+//        for (UIView *view in showImageView.subviews) {
+//            if ([view isKindOfClass:[PhotoView class]]) {
+//                [view removeFromSuperview];
+//            }
+//        }
+//
+//        [self.tileArray removeAllObjects];
+//        [self.tileCoordinateArray removeAllObjects];
         
         //保存数据
         for(YZJSelectPhotoModel* model in selPhotoModels) {
