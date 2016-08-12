@@ -50,7 +50,7 @@
     
 }
 
-- (void)setPhAsset:(PHAsset *)asset about:(NSMutableArray *)arraySelectPhotos select:(selectBlock)block
+- (void)setModel:(YZJSelectPhotoModel *)model about:(NSMutableArray *)arraySelectPhotos select:(selectBlock)block
 {
     _selectBlock = block;
     selectPhotos = arraySelectPhotos;
@@ -60,15 +60,15 @@
 //    CGSize size = CGSizeMake(assetW, assetH);
     //(这里不建议取原尺寸加载,会造成内存瞬间增高,取当前控件的3倍即可)
     CGSize size = self.frame.size;
-    size.width *= 2;
-    size.height *= 2;
+    size.width *= 3;
+    size.height *= 3;
     
-    [[YZJPhotosTool sharePhotoTool] requestImageForAsset:asset size:size resizeMode:PHImageRequestOptionsResizeModeExact completion:^(UIImage *image, NSDictionary *info) {
+    [[YZJPhotosTool sharePhotoTool] requestImageForAsset:model.asset size:size resizeMode:PHImageRequestOptionsResizeModeExact completion:^(UIImage *image, NSDictionary *info) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.imageView.image = image;
         
-        for (YZJSelectPhotoModel *model in arraySelectPhotos) {
-            if ([model.localIdentifier isEqualToString:asset.localIdentifier]) {
+        for (YZJSelectPhotoModel *theModel in arraySelectPhotos) {
+            if ([theModel.localIdentifier isEqualToString:model.localIdentifier]) {
                 _selectBtn.selected = YES;
                 break;
             }

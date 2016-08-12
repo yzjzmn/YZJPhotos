@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class PHAsset;
+@class PHAsset, YZJSelectPhotoModel;
 
 @interface PhotoView : UIView
 
-- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del asset:(PHAsset *)newAsset;
+- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del model:(YZJSelectPhotoModel *)newModel;
 
-@property (nonatomic) PHAsset *phAsset;
+@property (nonatomic, strong) YZJSelectPhotoModel *model;
 
 @end

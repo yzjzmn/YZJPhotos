@@ -8,6 +8,7 @@
 
 #import "PhotoView.h"
 #import <Photos/Photos.h>
+#import "YZJSelectPhotoModel.h"
 
 @interface PhotoView ()
 {
@@ -20,7 +21,7 @@
 
 @implementation PhotoView
 
-- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del asset:(PHAsset *)newAsset
+- (void)initWithTarget:(id)target panAction:(SEL)pan delAction:(SEL)del model:(YZJSelectPhotoModel *)newModel
 {
     UIPanGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:target action:pan];
     
@@ -28,7 +29,7 @@
     
     [delBtn addTarget:target action:del forControlEvents:UIControlEventTouchUpInside];
     
-    _phAsset = newAsset;
+    _model = newModel;
     
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     
@@ -36,7 +37,7 @@
     options.synchronous = YES;
     options.deliveryMode = PHImageRequestOptionsDeliveryModeHighQualityFormat;
     
-    [[PHImageManager defaultManager] requestImageForAsset:newAsset targetSize:CGSizeMake(kScreenWidth - 30, kScreenHeight) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+    [[PHImageManager defaultManager] requestImageForAsset:newModel.asset targetSize:CGSizeMake(kScreenWidth - 30, kScreenHeight) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         
         //设置图片
         [imageView setImage:result];

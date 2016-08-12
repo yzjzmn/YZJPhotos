@@ -68,8 +68,8 @@
 - (IBAction)addImageBtn_Click:(id)sender {
     
     YZJPhotoList *listVC = [[YZJPhotoList alloc] initWithStyle:UITableViewStylePlain];
-    listVC.arraySelectPhotos = [@[] mutableCopy];
-    listVC.maxSelectCount = kMaxSelectCnt - _tileArray.count;
+    listVC.arraySelectPhotos = _selectPhotos;
+    listVC.maxSelectCount = kMaxSelectCnt;
     
     WEAKSELF
     __weak typeof(listVC) weakPB = listVC;
@@ -80,21 +80,21 @@
         _selectPhotos = [NSMutableArray arrayWithArray:selPhotoModels];
         
         //每次回调清除UI和数据  （已选功能，有bug暂时搁置）
-//        for (UIView *view in showImageView.subviews) {
-//            if ([view isKindOfClass:[PhotoView class]]) {
-//                [view removeFromSuperview];
-//            }
-//        }
-//
-//        [self.tileArray removeAllObjects];
-//        [self.tileCoordinateArray removeAllObjects];
+        for (UIView *view in showImageView.subviews) {
+            if ([view isKindOfClass:[PhotoView class]]) {
+                [view removeFromSuperview];
+            }
+        }
+
+        [self.tileArray removeAllObjects];
+        [self.tileCoordinateArray removeAllObjects];
         
         //保存数据
         for(YZJSelectPhotoModel* model in selPhotoModels) {
             
             PhotoView *view = (PhotoView *) [[[UINib nibWithNibName:@"PhotoView" bundle:nil]
                                            instantiateWithOwner:self options:nil] objectAtIndex:0];
-            [view initWithTarget:weakSelf panAction:@selector(dragTile:) delAction:@selector(delImageBtnPressed:) asset:model.asset];
+            [view initWithTarget:weakSelf panAction:@selector(dragTile:) delAction:@selector(delImageBtnPressed:) model:model];
             
             view.frame = [self createFrameLayoutTile];
             
@@ -144,6 +144,8 @@
 {
     UIButton *btn = (UIButton *)sender;
     PhotoView *tileView = (PhotoView *)[btn superview];
+    
+    [_selectPhotos removeObject:tileView.model];
     
     [tileView setHidden:YES];
     [_tileArray removeObject:tileView];

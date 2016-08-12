@@ -181,23 +181,15 @@
     model.asset = asset;
     model.localIdentifier = asset.localIdentifier;
     WEAKSELF
-    [cell setPhAsset:asset about:_arraySelectPhotos select:^(BOOL isSelect) {
+    [cell setModel:model about:_arraySelectPhotos select:^(BOOL isSelect) {
         NSLog(@"%i", isSelect);
-        
         
         if (isSelect) {
             
             [weakSelf.arraySelectPhotos addObject:model];
-            
         } else {
             
-            for (YZJSelectPhotoModel *assetModel in weakSelf.arraySelectPhotos) {
-                if ([assetModel.localIdentifier isEqualToString:model.localIdentifier]) {
-                    [weakSelf.arraySelectPhotos removeObject:assetModel];
-                }
-            }
-            
-//            [weakSelf.arraySelectPhotos removeObject:model];
+            [weakSelf.arraySelectPhotos removeObject:model];
         }
         
         [weakSelf controlBottomBtnsStatus];

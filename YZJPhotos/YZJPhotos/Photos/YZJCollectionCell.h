@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class PHAsset;
+@class PHAsset, YZJSelectPhotoModel;
 
 typedef void(^selectBlock)(BOOL isSelect);
 
@@ -17,6 +17,6 @@ typedef void(^selectBlock)(BOOL isSelect);
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *selectBtn;
 
-- (void)setPhAsset:(PHAsset *)asset about:(NSMutableArray *)arraySelectPhotos select:(selectBlock)block;
+- (void)setModel:(YZJSelectPhotoModel *)model about:(NSMutableArray *)arraySelectPhotos select:(selectBlock)block;
 
 @end
