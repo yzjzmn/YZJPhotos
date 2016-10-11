@@ -67,11 +67,34 @@
 }
 - (IBAction)addImageBtn_Click:(id)sender {
     
+    
+    //判断权限
+    WEAKSELF
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    
+    if (status == AVAuthorizationStatusRestricted ||
+        status == AVAuthorizationStatusDenied) {
+        //权限受限  或者  用户不同意授权
+        return;
+    } else if (status == AVAuthorizationStatusNotDetermined) {
+        //刚安装  没有 权限判断时  要去请求权限   一般status都是PHAuthorizationStatusAuthorized
+        //结果和已授权是一样的
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            [weakSelf openPhotos];
+        }];
+    } else {
+        [self openPhotos];
+    }
+
+}
+
+- (void)openPhotos
+{
+    WEAKSELF
     YZJPhotoList *listVC = [[YZJPhotoList alloc] initWithStyle:UITableViewStylePlain];
     listVC.arraySelectPhotos = _selectPhotos;
     listVC.maxSelectCount = kMaxSelectCnt;
     
-    WEAKSELF
     __weak typeof(listVC) weakPB = listVC;
     
     [listVC setDoneBlock:^(NSArray<YZJSelectPhotoModel *> *selPhotoModels) {
@@ -85,7 +108,7 @@
                 [view removeFromSuperview];
             }
         }
-
+        
         [self.tileArray removeAllObjects];
         [self.tileCoordinateArray removeAllObjects];
         
@@ -93,7 +116,7 @@
         for(YZJSelectPhotoModel* model in selPhotoModels) {
             
             PhotoView *view = (PhotoView *) [[[UINib nibWithNibName:@"PhotoView" bundle:nil]
-                                           instantiateWithOwner:self options:nil] objectAtIndex:0];
+                                              instantiateWithOwner:self options:nil] objectAtIndex:0];
             [view initWithTarget:weakSelf panAction:@selector(dragTile:) delAction:@selector(delImageBtnPressed:) model:model];
             
             view.frame = [self createFrameLayoutTile];
@@ -113,8 +136,8 @@
     }];
     
     [self presentVC:listVC];
-
 }
+
 
 #pragma mark - presentVC
 - (void)presentVC:(UIViewController *)vc
