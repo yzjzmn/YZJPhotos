@@ -32,7 +32,26 @@
     
     [_selectBtn setImage:[UIImage imageNamed:@"btn_selected"] forState:UIControlStateSelected];
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(selectCell)];
+    [self addGestureRecognizer:tap];
+    
 }
+
+- (void)selectCell
+{
+    if (selectPhotos.count >= 9) {
+        NSLog(@"不能超过9张");
+        return;
+    }
+    _selectBtn.selected = !_selectBtn.selected;
+    
+    [_selectBtn.layer addAnimation:GetBtnStatusChangedAnimation() forKey:nil];
+    
+    if (_selectBlock) {
+        _selectBlock(_selectBtn.selected);
+    }
+}
+
 - (IBAction)selectBtn_Click:(UIButton *)sender {
     
     if (selectPhotos.count >= 9) {
@@ -67,13 +86,19 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.imageView.image = image;
         
+        NSMutableArray *indArr = [@[] mutableCopy];
         for (YZJSelectPhotoModel *theModel in arraySelectPhotos) {
-            if ([theModel.localIdentifier isEqualToString:model.localIdentifier]) {
-                _selectBtn.selected = YES;
-                break;
-            }
+            
+            [indArr addObject:theModel.localIdentifier];
+            
         }
+        
+        if ([indArr containsObject:model.localIdentifier]) {
+            _selectBtn.selected = YES;
+        }
+        
     }];
 }
+
 
 @end

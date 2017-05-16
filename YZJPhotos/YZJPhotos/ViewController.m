@@ -79,9 +79,19 @@
     } else if (status == AVAuthorizationStatusNotDetermined) {
         //刚安装  没有 权限判断时  要去请求权限   一般status都是PHAuthorizationStatusAuthorized
         //结果和已授权是一样的
-        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
-            [weakSelf openPhotos];
-        }];
+        
+        dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            
+            [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+                
+                if (status == AVAuthorizationStatusAuthorized) {
+                    [weakSelf openPhotos];
+                }
+                
+            }];
+            
+        });
+        
     } else {
         [self openPhotos];
     }

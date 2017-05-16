@@ -150,7 +150,7 @@
     for (YZJSelectPhotoModel *model in self.arraySelectPhotos) {
         [arrSel addObject:model.asset];
     }
-    [self pushShowBigImgVCWithDataArray:arrSel selectIndex:arrSel.count-1];
+    [self pushShowBigImgVCWithDataArray:arrSel selectIndex:0];
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -175,6 +175,11 @@
     
     NSInteger assetIndex = indexPath.row - 1;//indexPath.row由于第一个按钮做出调整
     YZJCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"YZJCollectionCell" forIndexPath:indexPath];
+    
+    if (!cell) {
+        cell = (YZJCollectionCell *)[[[NSBundle mainBundle] loadNibNamed:@"YZJCollectionCell" owner:self options:nil] lastObject];
+    }
+    
     PHAsset *asset = _arrayDataSources[assetIndex];
     
     YZJSelectPhotoModel *model = [[YZJSelectPhotoModel alloc] init];
@@ -204,10 +209,7 @@
 {
     if (indexPath.row == 0) {
         
-        if (![self judgeIsHaveCameraAuthority]) {
-            //无相册访问权限
-            
-        } else {
+        if ([self judgeIsHaveCameraAuthority]) {
             __weak typeof(self) weakSelf = self;
 
             if (_arraySelectPhotos.count >= self.maxSelectCount) {
@@ -224,12 +226,8 @@
             [self presentViewController:imagePicker animated:YES completion:^{
                 
             }];
-            
         }
-    } else {
         
-        //点击预览了
-        [self pushShowBigImgVCWithDataArray:_arrayDataSources selectIndex:indexPath.row - 1];
     }
 }
 
@@ -252,20 +250,22 @@
     __weak typeof(vc) weakVc  = vc;
     [vc setOnSelectedPhotos:^(NSArray<YZJSelectPhotoModel *> *selectedPhotos) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
-        [strongSelf.arraySelectPhotos removeAllObjects];
-        [strongSelf.arraySelectPhotos addObjectsFromArray:selectedPhotos];
-        [strongSelf.collectionView reloadData];
+        [weakSelf.arraySelectPhotos removeAllObjects];
+        [weakSelf.arraySelectPhotos addObjectsFromArray:selectedPhotos];
+        NSLog(@"预览返回回调数组%@", weakSelf.arraySelectPhotos);
+        [weakSelf.collectionView reloadData];
     }];
     
     [vc setBtnDoneBlock:^(NSArray<YZJSelectPhotoModel *> *selectedPhotos) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         
         __strong typeof(weakVc) strongVc = weakVc;
-        [strongSelf.arraySelectPhotos removeAllObjects];
-        [strongSelf.arraySelectPhotos addObjectsFromArray:selectedPhotos];
-        [strongSelf requestSelPhotos:strongVc];
-        [strongSelf.collectionView reloadData];
-        [strongSelf controlBottomBtnsStatus];
+        [weakSelf.arraySelectPhotos removeAllObjects];
+        [weakSelf.arraySelectPhotos addObjectsFromArray:selectedPhotos];
+        [weakSelf requestSelPhotos:strongVc];
+        NSLog(@"预览确定回调数组%@", weakSelf.arraySelectPhotos);
+        [weakSelf.collectionView reloadData];
+        [weakSelf controlBottomBtnsStatus];
     }];
     
     [self presentVC:vc];
