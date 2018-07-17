@@ -521,7 +521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z56CC4MHUM;
-				GCC_PREFIX_HEADER = /Users/zhidao/Desktop/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/yangzj/Desktop/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch;
 				INFOPLIST_FILE = YZJPhotos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yzj.www.YZJPhotos;
@@ -534,7 +534,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = Z56CC4MHUM;
-				GCC_PREFIX_HEADER = /Users/zhidao/Desktop/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/yangzj/Desktop/YZJPhotos/YZJPhotos/YZJPhotos/PrefixHeader.pch;
 				INFOPLIST_FILE = YZJPhotos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yzj.www.YZJPhotos;

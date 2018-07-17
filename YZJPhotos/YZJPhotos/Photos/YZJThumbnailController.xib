@@ -1,8 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="YZJThumbnailController">
@@ -36,20 +40,20 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G09-Sq-KT6">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.66666668653488159" green="0.66666668653488159" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="0.5" id="4af-xP-nwp"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjr-KV-895">
                             <rect key="frame" x="293" y="7" width="70" height="30"/>
-                            <color key="backgroundColor" red="0.31372549019607843" green="0.70588235294117641" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.31372549019607843" green="0.70588235294117641" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="Uwi-5s-fcw"/>
                                 <constraint firstAttribute="width" constant="70" id="dwW-Uf-211"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="确定"/>
                             <connections>
                                 <action selector="doneBtn_Click:" destination="-1" eventType="touchUpInside" id="bOX-Kd-8r1"/>
@@ -63,14 +67,14 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="预览">
-                                <color key="titleColor" red="0.31372549019607843" green="0.70588235294117641" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleColor" red="0.31372549019607843" green="0.70588235294117641" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
                                 <action selector="previewBtn_Click:" destination="-1" eventType="touchUpInside" id="91b-iR-6l5"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="G09-Sq-KT6" firstAttribute="top" secondItem="P0S-G4-Nhx" secondAttribute="top" id="0GG-wQ-cMj"/>
                         <constraint firstAttribute="trailing" secondItem="bjr-KV-895" secondAttribute="trailing" constant="12" id="43W-LR-6Qi"/>
@@ -83,7 +87,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="yuk-b2-NiY" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="7oD-FU-pBY"/>
                 <constraint firstAttribute="bottom" secondItem="P0S-G4-Nhx" secondAttribute="bottom" id="9Mu-1H-bhE"/>
@@ -93,7 +97,6 @@
                 <constraint firstAttribute="trailing" secondItem="P0S-G4-Nhx" secondAttribute="trailing" id="otV-05-UPu"/>
                 <constraint firstItem="yuk-b2-NiY" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qce-Eg-l9S"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
 </document>

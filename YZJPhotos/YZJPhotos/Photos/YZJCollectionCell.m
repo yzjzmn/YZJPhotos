@@ -95,6 +95,8 @@
         
         if ([indArr containsObject:model.localIdentifier]) {
             _selectBtn.selected = YES;
+        } else {
+            _selectBtn.selected = NO;
         }
         
     }];

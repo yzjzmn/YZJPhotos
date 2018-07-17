@@ -190,14 +190,17 @@
         NSLog(@"%i", isSelect);
         
         if (isSelect) {
-            
             [weakSelf.arraySelectPhotos addObject:model];
+            [weakSelf controlBottomBtnsStatus];
         } else {
-            
-            [weakSelf.arraySelectPhotos removeObject:model];
+            for (YZJSelectPhotoModel *itemModel in weakSelf.arraySelectPhotos) {
+                if ([itemModel.localIdentifier isEqualToString:model.localIdentifier]) {
+                    [weakSelf.arraySelectPhotos removeObject:itemModel];
+                    [weakSelf controlBottomBtnsStatus];
+                    return ;
+                }
+            }
         }
-        
-        [weakSelf controlBottomBtnsStatus];
     }];
     
     return cell;
